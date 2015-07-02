@@ -8,6 +8,10 @@ return sequelize.define(
       respuesta: {
         type: DataTypes.STRING,
         validate: { notEmpty: {msg: "-> Falta Respuesta"}}
+      },
+      tematica: {
+        type: DataTypes.STRING,
+        validate: { notEmpty: {msg: "-> Falta Temática"}}
       }
     });
 }
