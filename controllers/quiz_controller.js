@@ -16,7 +16,6 @@ models.Quiz.find({
       }).then(function(quiz) {
       if (quiz) {
         req.quiz = quiz;
-        console.log(quiz);
         next();
       } else { next(new Error('No existe quizId=' + quizId)); }
     }
