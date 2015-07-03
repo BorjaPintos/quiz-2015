@@ -41,6 +41,19 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(function(req, res, next) {
+  var now = new Date();
+  if (req.session.lastAccess){
+    if ( now.getTime() - req.session.lastAccess > 1000*60*2){ //2 minutos
+      //paso el tiempo
+      delete req.session.user;
+    }
+  }
+  //se establece el ultimo acceso
+  req.session.lastAccess = now.getTime();
+  next();
+});
+
 app.use('/', routes);
 
 // catch 404 and forward to error handler
